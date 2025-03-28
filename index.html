@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STATUS SOFTWARE</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="shortcut icon" href="servidor-de-datos.png">
+</head>
+<body>
+    <div class="container">
+        <h2>Status Software Version 2.2</h2>
+        <h3>Status <span id="fecha"></span></h3>
+        <div id="reloj" style="font-size: 20px; font-weight: bold;"></div>
+        <div id="checklist">
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="Portchannel 300GB OK"> Portchannel 300GB OK</label>
+                <button class="add-detail">+</button>
+            </div>
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="LinkFlapErr en Fxdiag/Mdiag"> LinkFlapErr en Fxdiag/Mdiag</label>
+                <button class="add-detail">+</button>
+            </div>
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="LinkFlapErr en BSL OK"> LinkFlapErr en BSL OK</label>
+                <button class="add-detail">+</button>
+            </div>
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="Cambios de VLAN L7"> Cambios de VLAN L7</label>
+                <button class="add-detail">+</button>
+            </div>
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="Revisión de Zabbix"> Revisión de Zabbix</label>
+                <button class="add-detail">+</button>
+            </div>
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="Revisión de pantallas"> Revisión de pantallas</label>
+                <button class="add-detail">+</button>
+            </div> 
+            <div class="check-item">
+                <label><input type="checkbox" class="chk" data-text="Revision de Fibras y equipos captivos QT STRESS"> Revision de Fibras y equipo captivos</label>
+                <button class="add-detail">+</button>
+            </div> 
+            <!-- 5 espacios vacíos -->
+            <div id="extras"></div>
+            <button id="agregarCampo">+ Agregar actividad</button>
+        </div>
+
+        <!-- Sección de pendientes -->
+    <div id="pendientesContainer">
+    <h2>Pendientes</h2>
+    <div id="pendientes"></div>
+    <button id="agregarPendiente">+ Agregar pendiente</button>
+    </div>
+
+    
+        <button id="generarReporte">Generar Reporte</button>
+        <button id="todoOk">Todo OK</button>
+        <h3>Reporte Generado</h3>
+        <textarea id="reporte" readonly></textarea>
+        <button id="copiarReporte">Copiar Reporte</button>
+        <!--<button id="enviarWhatsApp">Enviar por WhatsApp</button> -->
+        <a href="historial.html">Ver historial</a>
+    </div>
+    
+    <!-- Sección del historial -->
+    <div id="historial" style="display: none;"></div>
+    
+    <h5>Derechos reservados 
+    INFRAESTRUCTURA TEAM
+    </h5>
+    <h6>"Si lo puedes imaginar, lo puedes programar" -Alan Kay (Programacion ATS)</h6>
+    <script src="script_v9.js"></script>
+</body>
+</html>
