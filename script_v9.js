@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Agregar detalles adicionales al presionar "+" con icono indicador
     addDetailButtons.forEach((button, index) => {
         button.addEventListener("click", () => {
-            if (comentarioCount < 5) { // Limitar a 5 comentarios
+            if (comentarioCount < 15) { // Limitar a 15 comentarios
                 const textoBase = checkboxes[index].dataset.text;
                 let detalle = prompt(`Agregar detalle a "${textoBase}" (dejar vacío si no hay cambios):`);
                 if (detalle) {
