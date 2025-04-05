@@ -27,7 +27,7 @@ body {
 }
 
 .container:hover {
-    opacity: 1;
+    opacity: 100%;
 }
 
 h1, h3 {
