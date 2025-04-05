@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambiado a flex-start para que el contenido esté alineado en la parte superior */
+    height: 100vh;
+    background-color: #ffffffd8;
+}
+
+.container {
+    width: 80%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para mejor disposición del contenido */
+}
+
+h1 {
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    flex: 1; /* Permite que el contenido se expanda para llenar el espacio disponible */
+}
+
+.document-list {
+    width: 30%;
+    border-right: 1px solid #83a3bd73;
+    overflow-y: auto; /* Añadido scroll vertical si el contenido es muy largo */
+}
+
+.document-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.document-list li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.document-list li:hover {
+    background-color: #f5f5f5;
+}
+
+.document-viewer {
+    width: 100%;
+    padding: 20px;
+    height: calc(100vh - 84px); /* Ajustar la altura para que el iframe ocupe el espacio restante */
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
