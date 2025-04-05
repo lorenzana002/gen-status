@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cargando...</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      height: 100vh;
+      overflow: hidden;
+      font-family: monospace;
+      color: #00ffcc;
+    }
+
+    .matrix {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      color: #00ffcc;
+      opacity: 0.05;
+      z-index: 0;
+      pointer-events: none;
+      font-size: 16px;
+      white-space: pre;
+      line-height: 1.2;
+      animation: scroll 10s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
+    }
+
+    .loader-container {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .tux {
+      width: 120px;
+      height: auto;
+      z-index: 3;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.8));
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00ffcc, 0 0 20px #00ffcc inset;
+      z-index: 1;
+    }
+
+    .light-orbit {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      z-index: 2;
+      animation: rotate 3s linear infinite;
+    }
+
+    .light-orbit::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle, #00ffcc 0%, #005f52 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ffcc;
+      transform: translateX(-50%);
+    }
+
+    .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,204,0.2) 20%, transparent 70%);
+      z-index: 0;
+      animation: glowFade 4s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    @keyframes glowFade {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.3; }
+    }
+
+    .console {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      color: #00ffcc;
+      z-index: 3;
+    }
+
+    .console-line {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+
+    .console-line.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fondo Matrix -->
+<div class="matrix" id="matrix"></div>
+
+<!-- Loader con Tux -->
+<div class="loader-container">
+  <div class="glow"></div>
+  <div class="ring"></div>
+  <div class="light-orbit"></div>
+  <img class="tux" src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="Tux Linux">
+</div>
+
+<!-- Consola animada -->
+<div class="console" id="console">
+  <div class="console-line">[+] Iniciando sesión...</div>
+  <div class="console-line">[+] Autenticando credenciales...</div>
+  <div class="console-line">[✓] Conexión segura establecida.</div>
+  <div class="console-line">[~] Cargando entorno gráfico...</div>
+  <div class="console-line">[✔] ¡Bienvenido Administrator !</div>
+</div>
+
+<!-- Audio opcional para efecto terminal -->
+<!-- <audio id="beep" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio> -->
+
+<script>
+  // Redirigir después de 7 segundos
+  setTimeout(() => {
+    window.location.href = "home.html"; // Cambia esta URL por la de tu página principal
+  }, 7000);
+
+  // Mostrar líneas de consola una por una
+  const lines = document.querySelectorAll('.console-line');
+  let delay = 500;
+
+  lines.forEach((line, index) => {
+    setTimeout(() => {
+      line.classList.add('visible');
+      // Si quieres efecto sonoro: document.getElementById("beep").play();
+    }, delay * (index + 1));
+  });
+
+  // Simula caracteres Matrix en el fondo
+  const matrix = document.getElementById("matrix");
+  const linesCount = 120;
+  const columns = 80;
+  const chars = "01|&%#<>-+*";
+
+  let text = "";
+  for (let i = 0; i < linesCount; i++) {
+    let line = "";
+    for (let j = 0; j < columns; j++) {
+      line += chars[Math.floor(Math.random() * chars.length)];
+    }
+    text += line + "\n";
+  }
+  matrix.textContent = text;
+</script>
+
+</body>
+</html>
