@@ -184,3 +184,21 @@ async function corregirOrtografia(texto) {
 // Ejemplo de uso (comentado para evitar ejecución automática)
 // const textoCorregido = await corregirOrtografia("Texto con errores ortográficos");
 // console.log(textoCorregido);
+
+//Acceso
+window.onload = () => {
+    const acceso = sessionStorage.getItem("accesoPermitido");
+    const expira = sessionStorage.getItem("expira");
+    const ahora = Date.now();
+
+    if (acceso !== "true" || !expira || ahora > expira) {
+        sessionStorage.clear();
+        alert("Tu sesión ha expirado o no has iniciado sesión.");
+        window.location.href = "index+login.html";
+    }
+};
+
+function cerrarSesion() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+}
