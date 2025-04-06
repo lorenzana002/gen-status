@@ -194,7 +194,7 @@ window.onload = () => {
     if (acceso !== "true" || !expira || ahora > expira) {
         sessionStorage.clear();
         alert("Tu sesión ha expirado o no has iniciado sesión.");
-        window.location.href = "index+login.html";
+        window.location.href = "index.html";
     }
 };
 
