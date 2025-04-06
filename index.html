@@ -56,8 +56,8 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Bienvenido a STATUS SOFTWARE</h2>
-        <H5>Por favor, ingresa tus credenciales de acceso: </H5>
+        <h2>Bienvenido</h2>
+        <h5>Por favor, ingresa tus credenciales de acceso: </h5>
         <form id="loginForm">
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required>
@@ -74,12 +74,16 @@
             const password = document.getElementById('password').value;
 
             if (username === 'Administrator' && password === 'Temp123!') {
+                // Guardamos la sesión y su tiempo de expiración
+                sessionStorage.setItem("accesoPermitido", "true");
+                const expira = Date.now() + 5 * 60 * 1000; // 5 minutos
+                sessionStorage.setItem("expira", expira);
+
+                // Redirigimos directamente a la página final (evita loader visible)
                 window.location.href = 'loader3.html';
             } else {
                 alert('Credenciales incorrectas');
             }
-
-            
         });
     </script>
 </body>
