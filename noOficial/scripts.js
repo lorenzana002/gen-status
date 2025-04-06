@@ -29,3 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
         documentList.appendChild(li);
     });
 });
+//Salir
+function regresar() {
+    //sessionStorage.clear();
+    window.location.href = "../home.html";
+}
+
+window.onload = () => {
+    const acceso = sessionStorage.getItem("accesoPermitido");
+    const expira = sessionStorage.getItem("expira");
+    const ahora = Date.now();
+  
+    if (acceso !== "true" || !expira || ahora > expira) {
+      sessionStorage.clear();
+      alert("Tu sesión ha expirado o no has iniciado sesión.");
+      window.location.href = "index.html";
+    } else {
+      // Renueva la sesión por 5 minutos más
+      const nuevaExpira = Date.now() + 5 * 60 * 1000;
+      sessionStorage.setItem("expira", nuevaExpira);
+    }
+  };
